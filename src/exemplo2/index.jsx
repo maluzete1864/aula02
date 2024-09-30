@@ -2,23 +2,30 @@ import { useEffect, useState } from "react";
 
 export default function App() {
   
-  const [??,??] = useState([]);
+  const [usuario, setUsuario] = useState([]);
 
   useEffect(() => { 
 
     const buscarUsuario  = async () => {
-                    = await fetch('');
-        const dados =                ;
+        const resposta   = await fetch('https://jsonplaceholder.typicode.com/todos');
+        const dados      = await  resposta.json              ;
         setUsuario(dados);
     }
     buscarUsuario();
-  }, //complete o código);
+  }, []);
 
   return (
     <>
       <h1>Usuário</h1>
       <ul>
-        {}
+        {
+          usuario.map(usuario => (
+            <li key={usuario.userId}>
+            <p>{usuario.id}</p>;
+            <h1>{usuario.tittle}</h1>;
+            <p>{usuario.completed}</p>
+            </li>
+          ))}
       </ul>
     </>
   );
